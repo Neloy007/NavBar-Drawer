@@ -2,51 +2,65 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
-
-        <!-- Title -->
-        <EditText
-            android:id="@+id/editTitle"
+        app:cardBackgroundColor="#70000000"
+        android:elevation="20dp"
+        app:cardCornerRadius="10dp">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter title"
-            android:inputType="textCapWords"
-            android:layout_marginBottom="12dp" />
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="30dp">
 
-        <!-- Description -->
-        <EditText
-            android:id="@+id/editDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter description"
-            android:inputType="textMultiLine"
-            android:lines="4"
-            android:gravity="top"
-            android:layout_marginBottom="12dp" />
 
-        <!-- Image Picker -->
-        <ImageView
-            android:id="@+id/imagePreview"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginBottom="12dp"
-            android:src="@drawable/ic_add_photo"
-            android:scaleType="centerCrop"
-            android:background="@android:color/darker_gray"
-            android:contentDescription="Select Image" />
+            <EditText
+                android:id="@+id/editTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter title"
+                android:textColorHint="@color/white"
+                android:inputType="textCapWords"
+                android:layout_marginBottom="12dp" />
 
-        <!-- Submit Button -->
-        <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Item" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/editDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter description"
+                android:textColorHint="@color/white"
+                android:inputType="textMultiLine"
+                android:lines="4"
+                android:gravity="top"
+                android:layout_marginBottom="12dp" />
+
+
+            <ImageView
+                android:id="@+id/imagePreview"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="12dp"
+                android:src="@drawable/ic_add_photo"
+                android:scaleType="centerCrop"
+                android:background="@android:color/darker_gray"
+                android:contentDescription="Select Image" />
+
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#009688"
+                android:text="Add Item" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
 </ScrollView>

@@ -1,4 +1,4 @@
-package com.example.navanddrawer
+package com.example.navanddrawer.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.example.navanddrawer.R
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -33,8 +34,8 @@ class ProfileFragment : Fragment() {
         btnLogout = view.findViewById(R.id.btnLogout)
 
 
-        tvName.text = "John Doe"
-        tvEmail.text = "john@example.com"
+        tvName.text = "Neloy"
+        tvEmail.text = "neloy@gmail.com"
 
         btnEditProfile.setOnClickListener {
             Toast.makeText(requireContext(), "Edit Profile clicked", Toast.LENGTH_SHORT).show()

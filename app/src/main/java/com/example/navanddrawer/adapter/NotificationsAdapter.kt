@@ -1,5 +1,6 @@
-package com.example.navanddrawer
+package com.example.navanddrawer.adapter
 
+import android.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ class NotificationsAdapter(private val notifications: List<String>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(android.R.layout.simple_list_item_1, parent, false)
+            .inflate(R.layout.simple_list_item_1, parent, false)
         return NotificationViewHolder(view)
     }
 
@@ -22,6 +23,6 @@ class NotificationsAdapter(private val notifications: List<String>) :
     override fun getItemCount() = notifications.size
 
     class NotificationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView = itemView.findViewById(android.R.id.text1)
+        val textView: TextView = itemView.findViewById(R.id.text1)
     }
 }

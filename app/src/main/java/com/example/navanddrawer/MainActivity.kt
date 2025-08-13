@@ -2,39 +2,53 @@ package com.example.navanddrawer
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
+import com.example.navanddrawer.databinding.ActivityMainBinding
+import com.example.navanddrawer.view.AddFragment
+import com.example.navanddrawer.view.HomeFragment
+import com.example.navanddrawer.view.NotificationsFragment
+import com.example.navanddrawer.view.ProfileFragment
+import com.example.navanddrawer.view.SearchFragment
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var navigationView: NavigationView
-    private lateinit var bottomNav: BottomNavigationView
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        drawerLayout = findViewById(R.id.drawerLayout)
-        navigationView = findViewById(R.id.navigationView)
-        bottomNav = findViewById(R.id.bottomNav)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Drawer Menu Handling
-        navigationView.setNavigationItemSelectedListener { menuItem ->
-            if (menuItem.itemId == R.id.nav_logout) {
-                Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show()
-                // TODO: Add logout logic
+        // Set Toolbar as ActionBar
+        setSupportActionBar(binding.toolbar)
+
+        // Drawer toggle (hamburger icon)
+        toggle = ActionBarDrawerToggle(
+            this,
+            binding.drawerLayout,
+            binding.toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        binding.drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        // Navigation drawer click listener
+        binding.navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_logout -> {
+                    Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show()
+                }
             }
-            drawerLayout.closeDrawers()
+            binding.drawerLayout.closeDrawers()
             true
         }
 
-        // Bottom Navigation Handling
-        bottomNav.setOnItemSelectedListener { item ->
+        // Bottom navigation fragment switching
+        binding.bottomNav.setOnItemSelectedListener { item ->
             val fragment = when (item.itemId) {
                 R.id.nav_home -> HomeFragment()
                 R.id.nav_search -> SearchFragment()
@@ -49,9 +63,9 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        // Set default fragment
+        // Default fragment
         if (savedInstanceState == null) {
-            bottomNav.selectedItemId = R.id.nav_home
+            binding.bottomNav.selectedItemId = R.id.nav_home
         }
     }
 }

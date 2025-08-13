@@ -1,4 +1,4 @@
-package com.example.navanddrawer
+package com.example.navanddrawer.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
+import com.example.navanddrawer.R
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -43,7 +43,6 @@ class AddFragment : Fragment() {
             if (title.isEmpty() || desc.isEmpty()) {
                 Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT).show()
             } else {
-                // TODO: Save to database or Firebase
                 Toast.makeText(requireContext(), "Item Added", Toast.LENGTH_SHORT).show()
                 editTitle.text.clear()
                 editDescription.text.clear()
